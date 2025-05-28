@@ -70,6 +70,22 @@ window.addEventListener("load", function () {
         this.mouse.x = undefined;
         this.mouse.y = undefined;
       })
+      // Обработчик для касания на мобильных устройствах
+      this.canvas.addEventListener('touchmove', e => {
+        // Предотвращаем прокрутку страницы
+        e.preventDefault();
+        
+        // Получаем координаты касания
+        const touch = e.touches[0]; // Берем первое касание
+        const rect = this.canvas.getBoundingClientRect(); // Получаем размеры канваса
+        this.mouse.x = touch.clientX - rect.left; // Вычисляем координату X
+        this.mouse.y = touch.clientY - rect.top; // Вычисляем координату Y
+      });
+      // Обработчик для окончания касания
+      this.canvas.addEventListener('touchend', e => {
+        this.mouse.x = undefined; // Установите значение в undefined
+        this.mouse.y = undefined; // Установите значение в undefined
+      });
     }
     createGrid(){
       for (let y = 0; y < this.height; y += this.cellHeight) {
