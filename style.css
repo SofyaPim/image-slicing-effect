@@ -5,10 +5,11 @@
  
 }
 body{
+    background-color: #5d0d11;
   overflow: hidden;
 }
 #canvas1 {
-border: 3px solid rgb(0, 0, 0) ;
+
   position: absolute;
   top: 50%;
   left: 50%;
